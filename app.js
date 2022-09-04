@@ -46,6 +46,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('pre-offer-answer', (data) => {
+    debugger
     const { callerSocketId } = data
 
     const connectedPeer = connectedPeers.find(
@@ -59,13 +60,13 @@ io.on('connection', (socket) => {
 
   socket.on('webRTC-signaling', (data) => {
     debugger
-    const { connectedSocketId } = data
+    const { connectedUserSocketId } = data
 
     const connectedPeer = connectedPeers.find(
-      (peerSocketId) => peerSocketId === connectedSocketId
+      (peerSocketId) => peerSocketId === connectedUserSocketId
     )
     if (connectedPeer) {
-      io.to(callerSocketId).emit('webRTC-signaling', data)
+      io.to(connectedUserSocketId).emit('webRTC-signaling', data)
     }
   })
 

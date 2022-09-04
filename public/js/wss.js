@@ -23,6 +23,7 @@ export const registerSocketEvents = (socket) => {
   })
 
   socket.on('webRTC-signaling', (data) => {
+    debugger
     switch (data.type) {
       case constants.webRTCSignaling.OFFER:
         webRTCHandler.handleWebRTCOffer(data)
@@ -45,9 +46,11 @@ export const sendPreOffer = (data) => {
 }
 
 export const sendPreOfferAnswer = (data) => {
+  debugger
   socketIO.emit('pre-offer-answer', data)
 }
 
 export const sendDataUsingWebRTCSignaling = (data) => {
+  debugger
   socketIO.emit('webRTC-signaling', data)
 }
