@@ -91,6 +91,9 @@ export const getCallingDialog = (rejectCallHandler) => {
   dialogContent.appendChild(imageContainer)
   dialogContent.appendChild(buttonContainer)
 
+  hangUpCallButton.addEventListener('click', () => {
+    rejectCallHandler()
+  })
   return dialog
 }
 
@@ -121,4 +124,23 @@ export const getInfoDialog = (dialogTitle, dialogDescription) => {
   dialogContent.appendChild(description)
 
   return dialog
+}
+
+export const getLeftMessage = (message) => {
+  const messageContainer = document.createElement('div')
+  messageContainer.classList.add('message_left_container')
+  const messageParagraph = document.createElement('p')
+  messageParagraph.classList.add('message_left_paragraph')
+  messageParagraph.innerHTML = message
+  messageContainer.appendChild(messageParagraph)
+  return messageContainer
+}
+export const getRightMessage = (message) => {
+  const messageContainer = document.createElement('div')
+  messageContainer.classList.add('message_right_container')
+  const messageParagraph = document.createElement('p')
+  messageParagraph.classList.add('message_right_paragraph')
+  messageParagraph.innerHTML = message
+  messageContainer.appendChild(messageParagraph)
+  return messageContainer
 }

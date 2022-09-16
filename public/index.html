@@ -48,7 +48,10 @@
                   class="connecting_buttons_image"
                 />
               </button>
-              <button class="connecting_button" id="personal_code_video_button">
+              <button
+                class="connecting_button display_none"
+                id="personal_code_video_button"
+              >
                 <img
                   src="./images/videoButton.png"
                   class="connecting_buttons_image"
@@ -65,7 +68,10 @@
                   class="connecting_buttons_image"
                 />
               </button>
-              <button class="connecting_button" id="stranger_video_button">
+              <button
+                class="connecting_button display_none"
+                id="stranger_video_button"
+              >
                 <img
                   src="/images/videoButton.png"
                   class="connecting_buttons_image"
@@ -77,7 +83,7 @@
             <div class="checkbox_connection" id="allow_strangers_checkbox">
               <img
                 id="allow_strangers_checkbox_image"
-                class=""
+                class="display_none"
                 src="./images/check.png"
               />
             </div>
@@ -96,7 +102,6 @@
           <video
             class="remote_video display_none"
             muted
-            poster="./images/logo.png"
             autoplay
             id="remote_video"
           ></video>
@@ -168,6 +173,8 @@
     <script src="./js/wss.js" type="module"></script>
     <script src="./js/store.js" type="module"></script>
     <script src="./js/webRTCHandler.js" type="module"></script>
+    <script src="./js/recordingUtils.js" type="module"></script>
+    <script src="./js/strangerUtils.js" type="module"></script>
     <script src="./js/main.js" type="module"></script>
   </body>
 </html>
