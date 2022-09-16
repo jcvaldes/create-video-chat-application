@@ -79,6 +79,7 @@ checkbox.addEventListener('click', () => {
 
 const micButton = document.getElementById('mic_button')
 micButton.addEventListener('click', () => {
+  debugger
   const localStream = store.getState().localStream
   const micEnabled = localStream.getAudioTracks()[0].enabled
   localStream.getAudioTracks()[0].enabled = !micEnabled

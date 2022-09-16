@@ -122,14 +122,14 @@ export const showCallElements = (callType) => {
     callType === constants.callType.CHAT_PERSONAL_CODE ||
     callType === constants.callType.CHAT_STRANGER
   ) {
-    showChatCallElements();
+    showChatCallElements()
   }
 
   if (
     callType === constants.callType.VIDEO_PERSONAL_CODE ||
     callType === constants.callType.VIDEO_STRANGER
   ) {
-    showVideoCallElements();
+    showVideoCallElements()
   }
 }
 
