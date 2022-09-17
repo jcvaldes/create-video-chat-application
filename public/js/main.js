@@ -6,12 +6,21 @@ import * as ui from './ui.js'
 import * as recordingUtils from './recordingUtils.js'
 import * as strangerUtils from './strangerUtils.js'
 
+const getTurnServerCredentials = async () => {
+  const responseData = await axios.get('/api/get-turn-credentials')
+  console.log(responseData.data.token.iceServers)
+  webRTCHandler.setTURNServers(responseData.data.token.iceServers)
+}
 // initialization of socketIO connection
 const socket = io('/')
 wss.registerSocketEvents(socket)
 
 // muestra la camara en la parte superior izquierda
-webRTCHandler.getLocalPreview()
+// webRTCHandler.getLocalPreview()
+
+getTurnServerCredentials().then(() => {
+  webRTCHandler.getLocalPreview()
+})
 
 //register event listener for personal code copy button
 const personalCodeCopyButton = document.getElementById(
@@ -79,11 +88,9 @@ checkbox.addEventListener('click', () => {
 
 const micButton = document.getElementById('mic_button')
 micButton.addEventListener('click', () => {
-  debugger
   const localStream = store.getState().localStream
   const micEnabled = localStream.getAudioTracks()[0].enabled
   localStream.getAudioTracks()[0].enabled = !micEnabled
-
   ui.updateMicButton(micEnabled)
 })
 

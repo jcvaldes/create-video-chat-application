@@ -1,5 +1,6 @@
 const express = require('express')
 const http = require('http')
+const twilio = require('twilio')
 
 const PORT = process.env.PORT || 3000
 const app = express()
@@ -10,6 +11,18 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html')
+})
+app.get('/api/get-turn-credentials', (req, res) => {
+  const accountSid = 'ACc03aad966b1e41364c408a1fd5f7df60'
+  const authToken = '2d724b73436b39175ea10e14b0c6412c'
+  const client = twilio(accountSid, authToken)
+  client.tokens
+    .create()
+    .then((token) => res.send({ token }))
+    .catch((err) => {
+      console.log(err)
+      res.send({ message: 'failed to fetch TURN credentials', err })
+    })
 })
 
 let connectedPeers = []
