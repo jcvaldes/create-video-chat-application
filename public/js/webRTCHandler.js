@@ -46,6 +46,7 @@ const createPeerConnection = () => {
     iceTransportPolicy: 'relay'
   }
   peerConnection = new RTCPeerConnection(configuration)
+  debugger
   dataChannel = peerConnection.createDataChannel('chat')
   peerConnection.ondatachannel = (event) => {
     const dataChannel = event.channel
